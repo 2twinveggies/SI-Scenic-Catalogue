@@ -22,7 +22,7 @@
             button:hover { background-color: #0056b3; }
           </style>
           <script type="text/javascript">
-            const SHEET_URL = "PASTE_YOUR_WEB_APP_URL_HERE"; 
+            const SHEET_URL = "https://script.google.com/macros/s/AKfycbz4_i_xbVu7etLBFQAgq8lZENdnr4q5yE7KtBGPKiHET03sOEf74NBHqY11BE8QMz-Tyw/exec"; 
 
             async function loadItems() {
               let response = await fetch(SHEET_URL);
