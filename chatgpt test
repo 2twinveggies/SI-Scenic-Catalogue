@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Simple Greeting Gadget"
+               description="A gadget that greets the user"
+               author="Your Name">
+  </ModulePrefs>
+  
+  <Content type="html">
+    <![CDATA[
+      <html>
+        <head>
+          <script type="text/javascript">
+            function greetUser() {
+              var name = document.getElementById("nameInput").value;
+              var greeting = "Hello, " + (name ? name : "Guest") + "!";
+              document.getElementById("greetingMessage").innerHTML = greeting;
+            }
+          </script>
+        </head>
+        <body>
+          <h2>Welcome to My Gadget</h2>
+          <label for="nameInput">Enter your name:</label>
+          <input type="text" id="nameInput" placeholder="Your name" />
+          <button onclick="greetUser()">Greet Me</button>
+          <p id="greetingMessage"></p>
+        </body>
+      </html>
+    ]]>
+  </Content>
+</Module>
