@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Info List Widget"
+               description="A customizable info list widget for Google Sites"
+               author="Your Name">
+  </ModulePrefs>
+
+  <Content type="html">
+    <![CDATA[
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              max-width: 400px;
+              margin: 0 auto;
+            }
+            .info-list {
+              list-style: none;
+              padding: 0;
+            }
+            .info-item {
+              display: flex;
+              align-items: center;
+              padding: 10px;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              margin-bottom: 10px;
+              background: #f9f9f9;
+              box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            }
+            .info-icon {
+              width: 40px;
+              height: 40px;
+              margin-right: 10px;
+            }
+            .info-content h3 {
+              margin: 0;
+              font-size: 16px;
+              color: #333;
+            }
+            .info-content p {
+              margin: 5px 0 0;
+              font-size: 14px;
+              color: #666;
+            }
+          </style>
+        </head>
+        <body>
+          <ul class="info-list">
+            <li class="info-item">
+              <img class="info-icon" src="https://img.icons8.com/ios/50/info.png" alt="Info">
+              <div class="info-content">
+                <h3>Item 1</h3>
+                <p>Short description of item 1.</p>
+              </div>
+            </li>
+            <li class="info-item">
+              <img class="info-icon" src="https://img.icons8.com/ios/50/checkmark.png" alt="Check">
+              <div class="info-content">
+                <h3>Item 2</h3>
+                <p>Short description of item 2.</p>
+              </div>
+            </li>
+            <li class="info-item">
+              <img class="info-icon" src="https://img.icons8.com/ios/50/star.png" alt="Star">
+              <div class="info-content">
+                <h3>Item 3</h3>
+                <p>Short description of item 3.</p>
+              </div>
+            </li>
+          </ul>
+        </body>
+      </html>
+    ]]>
+  </Content>
+</Module>
