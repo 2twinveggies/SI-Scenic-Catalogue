@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Google Sheets Info List"
+               description="An editable info list widget with Google Sheets"
+               author="Your Name">
+  </ModulePrefs>
+
+  <Content type="html">
+    <![CDATA[
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; max-width: 400px; margin: 0 auto; }
+            .info-list { list-style: none; padding: 0; }
+            .info-item { display: flex; align-items: center; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; background: #f9f9f9; box-shadow: 2px 2px 8px rgba(0,0,0,0.1); }
+            .info-icon { width: 40px; height: 40px; margin-right: 10px; }
+            .info-content h3 { margin: 0; font-size: 16px; color: #333; }
+            .info-content p { margin: 5px 0 0; font-size: 14px; color: #666; }
+            .input-section { margin-top: 20px; }
+            input, button { padding: 8px; margin: 5px 0; width: 100%; }
+            button { background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 4px; }
+            button:hover { background-color: #0056b3; }
+          </style>
+          <script type="text/javascript">
+            const SHEET_URL = "PASTE_YOUR_WEB_APP_URL_HERE"; 
+
+            async function loadItems() {
+              let response = await fetch(SHEET_URL);
+              let items = await response.json();
+              let list = document.getElementById("infoList");
+              list.innerHTML = "";
+
+              items.forEach(item => {
+                let listItem = document.createElement("li");
+                listItem.className = "info-item";
+                listItem.innerHTML = '<img class="info-icon" src="https://img.icons8.com/ios/50/info.png" alt="Info">' +
+                  '<div class="info-content"><h3>' + item.title + '</h3><p>' + item.desc + '</p></div>';
+                list.appendChild(listItem);
+              });
+            }
+
+            async function addItem() {
+              let title = document.getElementById("titleInput").value;
+              let desc = document.getElementById("descInput").value;
+
+              if (title.trim() === "" || desc.trim() === "") {
+                alert("Please fill in both fields.");
+                return;
+              }
+
+              let response = await fetch(SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title: title, desc: desc })
+              });
+
+              if (response.ok) {
+                loadItems();
+              }
+
+              document.getElementById("titleInput").value = "";
+              document.getElementById("descInput").value = "";
+            }
+
+            document.addEventListener("DOMContentLoaded", loadItems);
+          </script>
+        </head>
+        <body>
+          <h2>Google Sheets Info List</h2>
+          <ul class="info-list" id="infoList"></ul>
+
+          <div class="input-section">
+            <h3>Add New Item</h3>
+            <input type="text" id="titleInput" placeholder="Enter title">
+            <input type="text" id="descInput" placeholder="Enter description">
+            <button onclick="addItem()">Add Item</button>
+          </div>
+        </body>
+      </html>
+  </Content>
+</Module>
