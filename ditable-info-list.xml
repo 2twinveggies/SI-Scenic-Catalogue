@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Editable Info List Widget"
+               description="An editable info list widget for Google Sites"
+               author="Your Name">
+  </ModulePrefs>
+
+  <Content type="html">
+    <![CDATA[
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              max-width: 400px;
+              margin: 0 auto;
+            }
+            .info-list {
+              list-style: none;
+              padding: 0;
+            }
+            .info-item {
+              display: flex;
+              align-items: center;
+              padding: 10px;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              margin-bottom: 10px;
+              background: #f9f9f9;
+              box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            }
+            .info-icon {
+              width: 40px;
+              height: 40px;
+              margin-right: 10px;
+            }
+            .info-content h3 {
+              margin: 0;
+              font-size: 16px;
+              color: #333;
+            }
+            .info-content p {
+              margin: 5px 0 0;
+              font-size: 14px;
+              color: #666;
+            }
+            .input-section {
+              margin-top: 20px;
+            }
+            input, button {
+              padding: 8px;
+              margin: 5px 0;
+              width: 100%;
+            }
+            button {
+              background-color: #007bff;
+              color: white;
+              border: none;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+            button:hover {
+              background-color: #0056b3;
+            }
+          </style>
+          <script type="text/javascript">
+            function addItem() {
+              var title = document.getElementById("titleInput").value;
+              var desc = document.getElementById("descInput").value;
+              var list = document.getElementById("infoList");
+
+              if (title.trim() === "" || desc.trim() === "") {
+                alert("Please fill in both fields.");
+                return;
+              }
+
+              var listItem = document.createElement("li");
+              listItem.className = "info-item";
+              listItem.innerHTML = '<img class="info-icon" src="https://img.icons8.com/ios/50/info.png" alt="Info">' +
+                '<div class="info-content">' +
+                '<h3>' + title + '</h3>' +
+                '<p>' + desc + '</p>' +
+                '</div>';
+
+              list.appendChild(listItem);
+
+              // Clear inputs after adding
+              document.getElementById("titleInput").value = "";
+              document.getElementById("descInput").value = "";
+            }
+          </script>
+        </head>
+        <body>
+          <h2>Editable Info List</h2>
+          <ul class="info-list" id="infoList">
+            <li class="info-item">
+              <img class="info-icon" src="https://img.icons8.com/ios/50/info.png" alt="Info">
+              <div class="info-content">
+                <h3>Sample Item</h3>
+                <p>This is an example description.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="input-section">
+            <h3>Add New Item</h3>
+            <input type="text" id="titleInput" placeholder="Enter title">
+            <input type="text" id="descInput" placeholder="Enter description">
+            <button onclick="addItem()">Add Item</button>
+          </div>
+        </body>
+      </html>
+  </Content>
+</Module>
