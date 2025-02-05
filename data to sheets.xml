@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <_DOCTYPE_html_>&lt;html&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;head&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;title&gt;Add Item to Google Sheet&lt;/title&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;script&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>function addItem() {</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>// Get the form values</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>var title = document.getElementById("title").value;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>var description = document.getElementById("description").value;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>// Prepare the data to send</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>var data = {</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>title: title</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>desc: description</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>};</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>// Make the POST request to the Google Apps Script web app</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>fetch('https://script.google.com/macros/s/AKfycbxor1sIiKaXUugaS-Fr2TpVx9RWnHM01P-To5yzdrVqLjZi_r8oOF79AU5ANWaIRzjX0g/execL'</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>method: 'POST'</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>headers: { 'Content-Type': 'application/json' }</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>body: JSON.stringify(data)</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>})</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>.then(response =&gt; response.text())</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>.then(result =&gt; {</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>// Show success message</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>alert(result);</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>// Clear the form</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>document.getElementById("title").value = '';</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>document.getElementById("description").value = '';</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>})</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>.catch(error =&gt; alert("Error: " + error));</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>}</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;/script&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;/head&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;body&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;h2&gt;Add Item to Google Sheet&lt;/h2&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;form id="addItemForm" onsubmit="event.preventDefault(); addItem();"&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;label for="title"&gt;Title:&lt;/label&gt;&lt;br&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;input type="text" id="title" name="title" required&gt;&lt;br&gt;&lt;br&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;label for="description"&gt;Description:&lt;/label&gt;&lt;br&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;textarea id="description" name="description" required&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;button type="submit"&gt;Add Item&lt;/button&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;/form&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;/body&gt;</_DOCTYPE_html_>
+  </row>
+  <row>
+    <_DOCTYPE_html_>&lt;/html&gt;</_DOCTYPE_html_>
+  </row>
+</root>
