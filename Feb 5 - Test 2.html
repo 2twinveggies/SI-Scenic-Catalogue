@@ -28,10 +28,10 @@
       
       var formData = new FormData(event.target);
       
-      fetch("https://script.google.com/macros/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec", {
+      fetch("https://script.google.com/a/macros/showimaging.com/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec", {
         method: "POST",
         body: formData
-      })
+      })"https://script.google.com/macros/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec
       .then(response => response.text())
       .then(data => {
         document.getElementById("response").innerText = data;
