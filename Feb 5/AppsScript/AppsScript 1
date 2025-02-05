@@ -3,7 +3,7 @@ function doPost(e) {
     Logger.log(e);
 
     // Open the target Google Sheet
-    var sheet = SpreadsheetApp.openById("YOUR_SPREADSHEET_ID").getSheetByName("FormResponses");
+    var sheet = SpreadsheetApp.openById("1QbPnjuQgl6pq1BVyQAkx4Xja0XikbNtlhspDzQQG1_0").getSheetByName("InfoList");
     if (!sheet) throw new Error("Sheet not found");
 
     // Parse incoming form data
