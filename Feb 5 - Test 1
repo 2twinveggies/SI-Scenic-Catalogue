@@ -28,22 +28,18 @@
       var email = document.getElementById('email').value;
       var message = document.getElementById('message').value;
       
-      var data = {
-        name: name,
-        email: email,
-        message: message
-      };
-      
-      fetch('https://script.google.com/macros/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert('Data submitted successfully');
+var formData = new FormData();
+formData.append("name", name);
+formData.append("email", email);
+formData.append("message", message);
+
+fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+  method: 'POST',
+  body: formData
+})
+        .then(response => response.text())
+        .then(data => {
+        alert('Data submitted successfully: ' + data);
       })
       .catch((error) => {
         alert('Error: ' + error);
