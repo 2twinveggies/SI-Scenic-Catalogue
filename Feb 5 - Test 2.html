@@ -23,23 +23,30 @@
   <p id="response"></p>
   
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      var formData = new FormData(event.target);
-      
-      fetch("https://script.google.com/a/macros/showimaging.com/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.json())  // Expect JSON response
-      .then(data => {
-        document.getElementById("response").innerText = data.status === "success" ? "Submitted successfully!" : "Error: " + data.message;
-      })
-      .catch(error => {
-        document.getElementById("response").innerText = "Error: " + error;
-      });
-    });
+   document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var formData = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"  // ✅ Add JSON header
+    },
+    body: JSON.stringify(formData)  // ✅ Convert data to JSON
+  })
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("response").innerText = data.status === "success" ? "Form submitted!" : "Error: " + data.message;
+  })
+  .catch(error => {
+    document.getElementById("response").innerText = "Fetch Error: " + error;
+  });
+});
   </script>
 </body>
 </html>
