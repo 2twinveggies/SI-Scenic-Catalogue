@@ -1,0 +1,29 @@
+function doPost(e) {
+  try {
+    Logger.log(e);
+
+    // Open the target Google Sheet
+    var sheet = SpreadsheetApp.openById("YOUR_SPREADSHEET_ID").getSheetByName("FormResponses");
+    if (!sheet) throw new Error("Sheet not found");
+
+    // Parse incoming form data
+    var data = JSON.parse(e.postData.contents);
+
+    var name = data.name || "No Name";
+    var email = data.email || "No Email";
+    var message = data.message || "No Message";
+
+    // Append the data to the sheet
+    sheet.appendRow([new Date(), name, email, message]);
+
+    return ContentService.createTextOutput(
+      JSON.stringify({ status: 'success' })
+    ).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    Logger.log("Error: " + error.message);
+    return ContentService.createTextOutput(
+      JSON.stringify({ status: 'error', message: error.message })
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+}
