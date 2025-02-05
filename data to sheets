@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Item to Google Sheet</title>
+  <script>
+    function addItem() {
+      // Get the form values
+      var title = document.getElementById("title").value;
+      var description = document.getElementById("description").value;
+
+      // Prepare the data to send
+      var data = {
+        title: title,
+        desc: description
+      };
+
+      // Make the POST request to the Google Apps Script web app
+      fetch('https://script.google.com/macros/s/AKfycbxor1sIiKaXUugaS-Fr2TpVx9RWnHM01P-To5yzdrVqLjZi_r8oOF79AU5ANWaIRzjX0g/execL',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.text())
+      .then(result => {
+        // Show success message
+        alert(result);
+        // Clear the form
+        document.getElementById("title").value = '';
+        document.getElementById("description").value = '';
+      })
+      .catch(error => alert("Error: " + error));
+    }
+  </script>
+</head>
+<body>
+  <h2>Add Item to Google Sheet</h2>
+  <form id="addItemForm" onsubmit="event.preventDefault(); addItem();">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
+
+    <button type="submit">Add Item</button>
+  </form>
+</body>
+</html>
