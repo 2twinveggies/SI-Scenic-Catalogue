@@ -34,7 +34,7 @@
         message: message
       };
       
-      fetch('https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxIZUo9PNB4HgeZwoVWEGrZ-IV3_TqDC6lC47M1woaXs3j25pxvInIZ6mFF11i3DlM-jA/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
