@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Form to Google Sheets</title>
+</head>
+<body>
+  <h1>Contact Form</h1>
+  <form id="contactForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message"></textarea><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+      
+      var data = {
+        name: name,
+        email: email,
+        message: message
+      };
+      
+      fetch('https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Data submitted successfully');
+      })
+      .catch((error) => {
+        alert('Error: ' + error);
+      });
+    });
+  </script>
+</body>
+</html>
