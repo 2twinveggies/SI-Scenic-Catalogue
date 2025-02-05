@@ -19,9 +19,9 @@
     
     <button type="submit">Submit</button>
   </form>
-
+  
   <p id="response"></p>
-
+  
   <script>
     document.getElementById("contactForm").addEventListener("submit", function(event) {
       event.preventDefault();
@@ -32,9 +32,9 @@
         method: "POST",
         body: formData
       })
-      .then(response => response.text())
+      .then(response => response.json())  // Expect JSON response
       .then(data => {
-        document.getElementById("response").innerText = data;
+        document.getElementById("response").innerText = data.status === "success" ? "Submitted successfully!" : "Error: " + data.message;
       })
       .catch(error => {
         document.getElementById("response").innerText = "Error: " + error;
