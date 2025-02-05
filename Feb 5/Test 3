@@ -23,7 +23,7 @@
       message: document.getElementById("message").value
     };
 
-    fetch("YOUR_WEB_APP_URL", {
+    fetch("https://script.google.com/a/macros/showimaging.com/s/AKfycbxyBCTkwuwbQy2NugP3Mg3Pmq0DfeNYGoLBhJr5LduuIBkJLcZHAjjEvb1rpUK66LfdhQ/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
